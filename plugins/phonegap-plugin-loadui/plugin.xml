@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android" id="phonegap-plugin-loadui" version="6.0.5">
+  <name>LoadUI</name>
+  <description>Load UI</description>
+  <license>MIT</license>
+  <engines>
+    <engine name="cordova" version=">=3.0.0"/>
+  </engines>
+  <js-module src="www/loadui.js" name="LoadUI">
+    <clobbers target="cordova.plugins.loadUI"/>
+  </js-module>
+  <platform name="android">
+    <source-file src="src/android/com/phonegap/plugins/loadui/LoadUI.java" target-dir="src/com/phonegap/plugins/loadui"/>
+    <config-file target="res/xml/config.xml" parent="/*">
+      <feature name="BarcodeScanner">
+        <param name="android-package" value="com.phonegap.plugins.loadui.LoadUI"/>
+      </feature>
+    </config-file>
+    <framework src="src/android/loadui.gradle" custom="true" type="gradleReference"/>
+    <resource-file src="src/android/LoadUI-debug.aar" target="libs/LoadUI-debug.aar"/>
+    <dependency id="cordova-plugin-compat" version="^1.0.0"/>
+  </platform>
+</plugin>
